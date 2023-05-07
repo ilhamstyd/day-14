@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilham Web</title>
+
+    <!-- icon -->
+    <link rel="website icon" type="jpg" href="./public/images/logo.png">
+
+    <!-- font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+   
+    <!-- style css -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/addProject.css">
+
+
+</head>
+<body>
+
+    <!-- start navbar -->
+    <nav>
+        <div class="left-nav">
+            <img src="./public/images/logo.png" alt="">
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/addProject">Add Project</a></li>
+            </ul>
+        </div>
+    
+        <div class="right-nav">
+            <a href="/contact">Contact Me</a>
+        </div>
+
+        <button onclick="showHamburger()" id="open">
+            <i class="fa fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hamburger menu -->
+    
+    <div class="container-hamburger" id="container-hamburger">
+        <a href="/">Home</a>
+        <a href="/addProject">Add Project</a>
+        <a href="/contactMe">Contact</a>
+    </div>
+    <!-- end navbar -->
+
+    <div class="container">
+        <div class="card">
+            <div class="left-card">
+                <h1>Hi, Welcome to my hut</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus assumenda rem commodi eveniet exercitationem, reprehenderit atque numquam consequuntur dignissimos rerum voluptatum ipsum! Ipsa, ipsum repellendus aspernatur ratione consequuntur natus placeat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus assumenda rem commodi eveniet exercitationem, reprehenderit atque numquam consequuntur dignissimos rerum voluptatum ipsum! Ipsa, ipsum repellendus aspernatur ratione consequuntur natus placeat!</p>
+                <div class="cv">
+                    <a href="/contactMe" id="contact">contact</a>
+                    <a href="/contactMe">
+                        <p>download CV<i class="fa fa-download" style="padding-left: 10px;"></i></p>    
+                    </a>
+                </div>
+                
+                <div class="icon">
+                    <a href="https://www.instagram.com/ilhamstyd/">
+                        <i class="fa-brands fa-linkedin"></i> 
+                    </a>
+                    <a href="https://web.facebook.com/">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right-card">
+                <img src="./public/images/ilhamm.jpg" alt="">
+                <h3>Ilham Setyadji Hermawan</h3>
+                <p>Fullstack Developer</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-card" id="contents">
+        <header><h1>My Project</h1></header>
+        <main>
+            {{range $index, $data := .AddProject}}
+            <div class="card-project">
+                <div class="content">
+                    <img src="/public/images/coding-ilustrasi-_160406100902-246.jpg" alt="image">
+                    <div>
+                    <a href="/add-project-detail/{{$data.ID}}" target="_blank">{{$data.Name}}</a></div>
+                    <div class="detail-blog-content">
+                        {{$data.StartDate}} - {{$data.EndDate}} 
+                        <div>{{$data.Author}}</div>
+                        </div>
+                    <div class="text">
+                        <p>{{$data.Description}}</p>
+                    </div>
+
+                    <!-- technologies -->
+                    <div class="tech">
+                        <i class="fa-brands fa-golang"></i>
+                        <i class="fa-brands fa-node"></i>
+                        <i class="fa-brands fa-react"></i>
+                    </div>
+                    <!-- end-technologies -->
+                </div>
+                <button><a href="/delete-addProject/{{$data.ID}}" style="color: aliceblue;">edit</a></button>
+                <button><a href="/delete-addProject/{{$data.ID}}" style="color: aliceblue;">delete</a></button>
+                <div style="float:right; margin: 10px">
+                    <p style="font-size: 15px; color:grey">1 minutes ago</p>
+                  </div>
+                </div>
+            {{end}}
+        </main>
+</div>
+
+    <!-- <script src="./public/js/script.js"></script> -->
+    <script src="./public/js/navbar.js"></script>
+</body>
+</html>

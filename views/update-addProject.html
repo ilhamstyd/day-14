@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilham Web | Add Project</title>
+
+    <!-- icon -->
+    <link rel="website icon" type="jpg" href="./public/images/logo.png">
+
+
+    <!-- font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/addProject.css">
+
+</head>
+<body>
+    
+    <!-- start navbar -->
+    <nav>
+        <div class="left-nav">
+            <img src="/public/images/logo.png" alt="">
+            <ul>
+                <li><a href="/" >Home</a></li>
+                <li><a href="/addProject" class="active">Add Project</a></li>
+            </ul>
+        </div>
+        
+        <div class="right-nav">
+            <a href="/contact">Contact Me</a>
+        </div>
+        <button onclick="showHamburger()" id="open">
+            <i class="fa fa-bars"></i>
+        </button>
+    </nav>
+
+    <div class="container-hamburger" id="container-hamburger">
+        <a href="/">Home</a>
+        <a href="/addProject">Add Project</a>
+        <a href="/contact">Contact</a>
+    </div>
+    <!-- end navbar -->
+
+    <form action="/add-add-project-detail" method="post">
+        <div class="container-addProject">
+            <div class="addProject">
+                <h1>ADD MY PROJECT</h1>
+
+                <div class="projectName">
+                    <label for="projectName">Project Name
+                        <input name="projectName" type="text" id="projectName" >
+                    </label>
+                </div>
+
+                <div class="allDate">
+                    <div class="startDate">
+                        <label for="startDate">Start Date
+                            <input type="date" id="startDate">
+                        </label>
+                    </div>
+
+                    <div class="endDate">
+                        <label for="endDate">End Date
+                            <input type="date" id="endDate">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="desc">
+                    <label for="desc">Description
+                        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                    </label>
+                </div>
+
+                <div class="technologies">
+                    <div>
+                        <label for="">Technologies</label>
+                    </div>
+                    <div class="up-tech">
+                        <input type="checkbox" id="tech-one">
+                        <label for="tech-one">Node JS
+                        </label>
+                        <input type="checkbox" id="tech-two">
+                        <label for="tech-two">React JS
+                        </label>
+                    </div>
+
+                    <div class="bottom-tech">
+                        <input type="checkbox" id="tech-three">
+                        <label for="tech-three">Python
+                        </label>
+                        <input type="checkbox" id="tech-four">
+                        <label for="tech-four">Golang
+                        </label>
+                    </div>
+                </div>
+
+                <div class="upFile">
+                    <label for="upload-image">Upload Image
+                        <input type="file" id="upImg">
+                    </label>
+                </div>
+
+                <div class="btn">
+                    <button type="submit">submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="container-card" id="contents">
+        {{range $index, $data := .AddProject}}
+            <header><h1>My Project</h1></header>
+            <main>
+                <div class="card-project">
+                    <div class="content">
+                        <img src="/public/images/coding-ilustrasi-_160406100902-246.jpg" alt="image">
+                        <a href="/add-project-detail/{{$index}}" target="_blank" >{{$data.ProjectName}}</a>
+                        <div class="detail-blog-content">
+                            {{$data.PostDate}} | {{$data.Author}}
+                            </div>
+                        <div class="text">
+                            <p>{{$data.Content}}</p>
+                        </div>
+    
+                        <!-- technologies -->
+                        <div class="tech">
+                            <i class="fa-brands fa-golang"></i>
+                            <i class="fa-brands fa-node"></i>
+                            <i class="fa-brands fa-react"></i>
+                        </div>
+                        <!-- end-technologies -->
+                    </div>
+                    <button><a href="/delete-addProject/{{$index}}">edit</a></button> 
+                    <button><a href="/delete-addProject/{{$index}}">delete</a></button> 
+
+                    <div style="float:right; margin: 10px">
+                        <p style="font-size: 15px; color:grey">1 minutes ago</p>
+                      </div>
+                </div>
+            </main>
+            {{end}}
+        </div>
+        <script src="/public/js/navbar.js"></script>
+    </body>
+</html>
