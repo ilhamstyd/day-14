@@ -1,8 +1,17 @@
-function showHamburger() {
-    let hamburger = document.getElementById("container-hamburger");
-    if (hamburger.style.display === "block") {
-      hamburger.style.display = "none";
-    } else {
-      hamburger.style.display = "block";
-    }
+let hamburgerIsOpen = false;
+
+function openHamburger() {
+  let hamburgerNavContainer = document.getElementById("hamburger-nav-container");
+
+  // !hamburgerIsOpen > hamburgerIsOpen == false
+  // hamburgerIsOpen > hamburgerIsOpen == true
+  if (!hamburgerIsOpen) {
+    console.log(hamburgerIsOpen);
+    hamburgerNavContainer.style.display = "block";
+    hamburgerIsOpen = true;
+  } else {
+    console.log(hamburgerIsOpen);
+    hamburgerNavContainer.style.display = "none";
+    hamburgerIsOpen = false;
+  }
 }

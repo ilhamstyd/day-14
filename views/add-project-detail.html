@@ -4,91 +4,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ilham setyadji Web</title>
+    <title>Personal Web</title>
+    <link rel="website icon" href="/public/images/logo.png"/>
 
-    <!-- icon -->
-    <link rel="website icon" type="jpg" href="/public/images/logo.png">
+    <!-- font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-     <!-- font awesome-->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-     <!-- font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-     <!-- style css -->
+    <!-- style css -->
     <link rel="stylesheet" href="/public/css/add-project-detail.css">
-    <link rel="stylesheet" href="/public/css/style.css">
+
+     <!-- Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
 
 </head>
 <body>
 
     <!-- start navbar -->
-    <nav>
-        <div class="left-nav">
-            <img src="/public/images/logo.png" alt="detail">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/addProject" class="active">Add Project</a></li>
-
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" style="background-color: rgb(244, 244, 247); height: 50px; font-family: 'Poppins', sans-serif;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="/public/images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: rgb(244, 244, 247);">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: 500;">
+              <li class="nav-item">
+                <a class="nav-link active fs-6" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6" href="/addProject">Add Project</a>
+              </li>
             </ul>
+            <a class="ps-1 pe-1 pt-0 pb-0 fs-6 btn btn-outline-dark nav-item" href="/contactMe">contact me</a>
+            </div>
         </div>
-            
-        <div class="right-nav">
-            <a href="/contact">Contact Me</a>
-        </div>
-        <button onclick="showHamburger()" id="open">
-            <i class="fa fa-bars"></i>
-        </button>
-    </nav>
-
-    
+      </nav>
     <!-- end navbar -->
 
-    <div class="grid-container">
-        <div class="header">
-            <h1>{{.AddProject.Name}}</h1>
+<div class="grid-container">
+    <div class="header"><h1>{{.Project.ProjectName}}</h1></div>
+        <div class="left-item">
+            <img src="/public/images/coding-ilustrasi-_160406100902-246.jpg" alt="">
+        </div>     
+        <div class="right-item">
+            <div>
+                <h3>Duration</h3>
+                <span class="duration">
+                    <i class="fa-solid fa-calculator fa-sm"></i>
+                    <p>{{.Project.StartDate}} - {{.Project.EndDate}}</p>
+                </span>
+                <span class="clock">
+                    <i class="fa fa-clock">
+                    </i>
+                    <p>{{.Project.Duration}}</p>
+                </span>
+            </div>
+
+            <div>
+                <h3>Technologies</h3>
+                <div class="left-tech">
+                        {{range .Project.Technologies}}
+                        {{if eq . "Node JS"}}
+                        <i class="fa-brands fa-node"></i>
+                        <p>Node JS</p>
+                        {{else if eq . "React JS"}}
+                        <i class="fa-brands fa-react"></i>
+                        <p>React JS</p>
+                    </div>
+                    <div class="right-tech">
+                        {{else if eq . "Python"}}
+                        <i class="fa-brands fa-python"></i>
+                        <p style="padding-left: 8px;">Python</p>
+                        {{else if eq . "Golang"}}
+                        <i class="fa-brands fa-golang"></i>
+                        <p>Golang</p>
+                        {{end}}
+                        {{end}}
+                    </div>
+                </div>
         </div>
-            <div class="left-item">
-                <img src="/public/images/coding-ilustrasi-_160406100902-246.jpg" alt="">
-            </div>     
-            <div class="right-item">
-                <div>
-                    <h3>Duration</h3>
-                    <span class="duration">
-                        <i class="fa-solid fa-calculator fa-sm"></i>
-                        <p>{{.AddProject.StartDate}} - {{.AddProject.EndDate}}</p>
-                    </span>
-                    <span class="clock">
-                        <i class="fa fa-clock">
-                        </i>
-                        <p>{{.AddProject.Author}}</p>
-                    </span>
-                </div>
-
-                <div>
-                    <h3>Technologies</h3>
-                        <div class="left-tech">
-                            <i class="fa-brands fa-node"></i>
-                            </i>
-                            <p>Node JS</p>
-                            <i class="fa-brands fa-react"></i>
-                            <p>React JS</p>
-                        </div>
-                        <div class="right-tech">
-                            <i class="fa-brands fa-python"></i>
-                            <p style="padding-left: 8px;">Python</p>
-                            <i class="fa-brands fa-golang"></i>
-                            <p>Golang</p>
-                      </div>
-                </div>
-            </div>
-
-            <div class="main">
-                <p>{{.AddProject.Description}}</p>
-            </div>
-      </div>
+        <div class="main">
+            <p>
+                {{.Project.Description}}
+            </p>
+            <p>
+                {{.Project.Description}}
+            </p>
+            <p>
+                {{.Project.Description}}
+            </p>
+        </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

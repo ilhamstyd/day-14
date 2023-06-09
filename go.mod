@@ -1,4 +1,4 @@
-module personal-web
+module day-10
 
 go 1.20
 

@@ -1,5 +1,6 @@
 form{
     background-color: #dfe2e7;
+    font-family: 'Poppins',sans-serif;
 }
 
 .container-addProject{
@@ -16,6 +17,7 @@ form{
 .addProject h1{
     text-align: center;
     margin-bottom: 35px;
+    font-weight: 600;
 }
 
 .addProject label{
@@ -35,6 +37,7 @@ form{
 .allDate{
     display: flex;
     gap: 20px;
+    width: 100%;
 }
 
 .allDate input{
@@ -99,7 +102,7 @@ form{
     border-radius: 35px;
     border:1px solid #dbdbdb;
     background-color: #000;
-    color: white;
+    color: #fff;
     padding: 5px 20px;
     cursor: pointer;
 }
